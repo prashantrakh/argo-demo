@@ -1,0 +1,51 @@
+helm_hpa_9a5e45faf1af5f8cadd2a8b4d9a49b0a:
+    enabled: true
+    max_replicas: 2
+    min_replicas: 1
+    name: argo-demo
+    target_cpu_utilization_percentage: 50
+    target_memory_utilization_percentage: 50
+    workload_kind: Deployment
+    workload_name: argo-demo
+helm_ingress_3f68ccf27c6a5b0982a8955371b8ea1f:
+    annotations:
+        kubernetes.io/ingress.allow-http: "false"
+    class_name: argo-demo
+    default_backend_name: argo-demo
+    default_backend_port: 80
+    labels:
+        service: myapp
+    name: argo-demo
+    rules: []
+    tls: ""
+helm_service_account_f2e87782b8df5278aaccfa785aadd965:
+    annotations: {}
+    automount: false
+    labels: {}
+    name: argo-demo
+helm_service_b56e8912f5b05d5bbbbec42cc654add4:
+    name: argo-demo
+    port: 80
+    protocol: TCP
+    selector_labels:
+        service: myapp
+    target_port: 80
+    type: LoadBalancer
+helm_workload_ed5afaf1f0905c62b48f5a8b5ac188c8:
+    env: {}
+    env_from_config: []
+    env_from_secret: []
+    image: nginx
+    image_pull_policy: Always
+    image_pull_secret: null
+    image_tag: latest
+    kind: Deployment
+    labels:
+        service: myapp
+    name: argo-demo
+    port: 80
+    protocol: TCP
+    replicas: 1
+    service_account: argo-demo
+    volume_mounts: []
+    volumes: []
